@@ -16,7 +16,7 @@ def home():
 @app.route('/<table_name>')
 def table_all_data(table_name):
     table_header, table_contents = table_all(table_name)
-    return render_template('table_contents.html', table_header=table_header, table_contents=table_contents)
+    return render_template('sv-contents.html', table_header=table_header, table_contents=table_contents)
 
 
 # function to list all tables within a database
