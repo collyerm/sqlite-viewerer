@@ -1,0 +1,38 @@
+{% extends 'sv-base.html' %}
+
+{% block content %}
+
+    <div class="accordion" id="accordionExample">
+        {% for key, value in tab_columns.items() %}
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#{{ key }}"
+                                aria-expanded="true" aria-controls="collapseOne">
+                            {{ key }}
+                            <a href="{{ url_for('table_all_data', table_name=key) }}"><span class="badge badge-primary badge-pill" style="margin-left:50px">VIEW THIS TABLE</span>
+                                </a>
+                        </button>
+                    </h2>
+                </div>
+
+                {% for item in value %}
+                    <div id="{{ key }}" class="collapse hide" aria-labelledby="headingOne"
+                         data-parent="#accordionExample">
+                        <div class="card" style="width: 18rem;">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">{{ item[0] }}
+                                    <span class="badge badge-primary badge-pill">{{ item[1] }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+{% endblock content %}
